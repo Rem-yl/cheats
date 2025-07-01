@@ -3,7 +3,7 @@
 git log --oneline --decorate --graph --pretty="%Cgreen%cd%Creset %Cred%h%Creset %Cblue%an%Creset %s" --date=short -n <n>
 
 # 查看文件的历史变更
-git log --follow -- <file>
+git log --follow --graph --decorate --pretty=format:"%Cgreen%cd%Creset %Cred%h%Creset %Cblue%an%Creset %s" --date=short -- <file>
 $ file: git ls-files
 
 % git, delete
@@ -24,3 +24,17 @@ $ commit: git log --oneline | awk '{print $1}'
 # 修改commit
 git rebase -i <commit>
 $ commit: git log --oneline | awk '{print $1}'
+
+% git, diff
+# 显示文件与当前分支差异
+git diff <commit1> HEAD --color-words -- <file>
+$ commit1: git log --oneline -n 20 | awk '{print $1}'
+$ file: git ls-files
+
+% git, blame
+# 查看文件的责任人
+git blame --date=short <file>
+
+# 查看文件指定行范围的修改记录
+git blame -L --date=short <start>,<end> <file>
+$ file: git ls-files
