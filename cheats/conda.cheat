@@ -1,0 +1,19 @@
+% conda, log
+# 查看所有环境
+conda env list
+
+% conda, create
+# 创建环境
+conda create -n <env_name> python=<version>
+
+# 从文件中创建环境
+conda env create -f <file>
+
+% conda, export
+# 导出环境
+conda env export -n <env_name> > <env_name>.yml
+
+% conda, delete
+# 删除指定环境
+conda remove --name <env_name> --all
+$ env_name: conda env list | awk '{print $1}' | grep -vE '^#|^$|base'
