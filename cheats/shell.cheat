@@ -1,0 +1,6 @@
+% file, log
+# 查看目录下占空间最多的文件
+find <dir> -type f -print0 | xargs -0 du -h | sort -hr | head -n 10
+
+# 显示前 N 个最大文件/目录
+du -ah <dir> | sort -hr | head -n 10
