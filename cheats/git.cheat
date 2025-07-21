@@ -20,6 +20,10 @@ $ remote_branch: git branch -r | sed 's/origin\///'
 git reset --soft <commit>
 $ commit: git log --oneline | awk '{print $1}'
 
+% git, reset
+# 回滚到上一次的状态(放弃所有更改)
+git reset --hard HEAD
+
 % git, commit 
 # 修改commit
 git rebase -i <commit>
@@ -38,3 +42,7 @@ git blame --date=short <file>
 # 查看文件指定行范围的修改记录
 git blame -L --date=short <start>,<end> <file>
 $ file: git ls-files
+
+% git, stash
+# 暂存更改
+git stash push -m <comment>
