@@ -46,3 +46,7 @@ $ file: git ls-files
 % git, stash
 # 暂存更改
 git stash push -m <comment>
+
+% git, status
+# 查看所有文件的提交情况
+git status --untracked-files=all
