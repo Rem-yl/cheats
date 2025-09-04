@@ -39,6 +39,14 @@ $ file: git ls-files
 # 查看文件的责任人
 git blame --date=short <file>
 
+% git, blame
+# 查看文件某几行的更改
+git blame -L <start>,<end> <file>
+
+% git, blame
+# 查看某次提交的更改
+git show <hash_id>
+
 # 查看文件指定行范围的修改记录
 git blame -L --date=short <start>,<end> <file>
 $ file: git ls-files
