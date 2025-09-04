@@ -4,3 +4,11 @@ find <dir> -type f -print0 | xargs -0 du -h | sort -hr | head -n 10
 
 # 显示前 N 个最大文件/目录
 du -ah <dir> | sort -hr | head -n 10
+
+% ps, info
+# 查看正在运行的任务
+ps aux | grep <job_name> | grep -v grep
+
+% kill, kill
+# 批量干掉任务
+pkill -f <job_name>
