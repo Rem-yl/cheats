@@ -13,6 +13,10 @@ ps aux | grep <job_name> | grep -v grep
 # 批量干掉任务
 pkill -f <job_name>
 
+% kill, pkill
+# ps查看任务后批量干掉
+ps aux | grep <job_name> | grep -v grep | awk '{print $2}' | xargs kill
+
 % cmd, log
 # 将输出记录到临时文件
 <cmd> 2>&1 | tee -a <tmp>.log
