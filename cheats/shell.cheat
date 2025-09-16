@@ -23,7 +23,7 @@ ps aux | grep <job_name> | grep -v grep | awk '{print $2}' | xargs kill
 
 % file, search
 # 搜索匹配的文本
-grep -rE "<file_partten>" <dir>
+grep -rEn "<file_partten>" <dir>
 
 % file, search
 # 搜索目录下文件中包含pattern的行
