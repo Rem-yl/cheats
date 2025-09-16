@@ -20,3 +20,11 @@ ps aux | grep <job_name> | grep -v grep | awk '{print $2}' | xargs kill
 % cmd, log
 # 将输出记录到临时文件
 <cmd> 2>&1 | tee -a <tmp>.log
+
+% file, search
+# 搜索匹配的文本
+grep -rE "<file_partten>" <dir>
+
+% file, search
+# 搜索目录下文件中包含pattern的行
+grep -rn --include="<file>" "<partten>" <dir>
