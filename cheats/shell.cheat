@@ -5,6 +5,20 @@ find <dir> -type f -print0 | xargs -0 du -h | sort -hr | head -n 10
 # 显示前 N 个最大文件/目录
 du -ah <dir> | sort -hr | head -n 10
 
+# 查看空目录
+find <dir> -type d -empty
+
+% file, delete
+# 删除目录下所有文件但保留目录
+find <dir> -type f -path "*/<partten>/*" -exec rm -f {} +
+
+% file, search
+# 搜索匹配的文本
+grep -rEn "<file_partten>" <dir>
+
+# 搜索目录下文件中包含pattern的行
+grep -rn --include="<file>" "<partten>" <dir>
+
 % ps, info
 # 查看正在运行的任务
 ps aux | grep <job_name> | grep -v grep
@@ -21,10 +35,6 @@ ps aux | grep <job_name> | grep -v grep | awk '{print $2}' | xargs kill
 # 将输出记录到临时文件
 <cmd> 2>&1 | tee -a <tmp>.log
 
-% file, search
-# 搜索匹配的文本
-grep -rEn "<file_partten>" <dir>
-
-% file, search
-# 搜索目录下文件中包含pattern的行
-grep -rn --include="<file>" "<partten>" <dir>
+% network, port
+# 查看某个端口是否被占用
+lsof -i :<port>
