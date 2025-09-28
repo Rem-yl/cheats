@@ -1,0 +1,128 @@
+% file, size
+# 查看目录下占空间最多的文件
+find <dir> -type f -print0 | xargs -0 du -h | sort -hr | head -n 10
+
+# 显示前 N 个最大文件/目录
+du -ah <dir> | sort -hr | head -n 10
+
+# 查看目录大小(按大小排序)
+du -sh * | sort -hr
+
+# 查看空目录
+find <dir> -type d -empty
+
+% file, delete
+# 删除目录下所有文件但保留目录
+find <dir> -type f -path "*/<partten>/*" -exec rm -f {} +
+
+% file, display
+# 显示行号
+cat -n <file>
+
+# 查看文件前几行
+head -n <num> <file>
+
+# 查看文件后几行
+tail -n <num> <file>
+
+# 实时查看文件末尾
+tail -f <file>
+
+% file, stats
+# 统计文件行数
+wc -l <file>
+
+# 统计文件字符数
+wc -c <file>
+
+# 统计文件词数
+wc -w <file>
+
+% file, process
+# 排序文件内容
+sort <file>
+
+# 去重文件内容
+sort <file> | uniq
+
+# 统计重复行
+sort <file> | uniq -c
+
+# 替换文件内容
+sed 's/<old>/<new>/g' <file>
+
+# 查找并替换文件内容
+sed -i 's/<old>/<new>/g' <file>
+
+% file, search
+# 搜索匹配的文本
+grep -rEn "<file_partten>" <dir>
+
+# 搜索目录下文件中包含pattern的行
+grep -rn --include="<file>" "<partten>" <dir>
+
+# 在文件中搜索(忽略大小写)
+grep -i "<pattern>" <file>
+
+# 搜索多个文件
+grep -l "<pattern>" <files>
+
+# 显示匹配行的上下文
+grep -C <num> "<pattern>" <file>
+
+# 使用正则表达式搜索
+grep -E "<regex>" <file>
+
+# 反向搜索(不包含pattern的行)
+grep -v "<pattern>" <file>
+
+% file, find
+# 按名称查找文件
+find <dir> -name "<filename>"
+
+# 按类型查找文件
+find <dir> -type f -name "*.<ext>"
+
+# 按大小查找文件
+find <dir> -size +<size>M
+
+# 按修改时间查找文件
+find <dir> -mtime -<days>
+
+# 按权限查找文件
+find <dir> -perm <mode>
+
+# 查找并执行命令
+find <dir> -name "<pattern>" -exec <command> {} \;
+
+% file, link
+# 创建硬链接
+ln <source> <target>
+
+# 创建软链接
+ln -s <source> <target>
+
+# 查看链接目标
+readlink <link>
+
+# 查看文件类型
+file <filename>
+
+% directory, operation
+# 创建目录
+mkdir <dirname>
+
+# 递归创建目录
+mkdir -p <path/to/dir>
+
+# 删除空目录
+rmdir <dirname>
+
+# 递归删除目录
+rm -rf <dirname>
+
+# 复制目录
+cp -r <source> <target>
+
+# 移动/重命名目录
+mv <source> <target>

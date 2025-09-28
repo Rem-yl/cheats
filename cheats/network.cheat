@@ -1,0 +1,105 @@
+% network, port
+# 查看某个端口是否被占用
+lsof -i :<port>
+
+% network, connection
+# 查看所有网络连接
+netstat -tulpn
+
+# 查看网络接口统计
+netstat -i
+
+# 查看路由表
+route -n
+
+# 查看ARP表
+arp -a
+
+% network, test
+# 测试网络连通性
+ping -c 4 <host>
+
+# 跟踪网络路径
+traceroute <host>
+
+# 查看DNS解析
+nslookup <domain>
+
+# 扫描端口
+nmap -p <port_range> <host>
+
+% network, download
+# 下载文件
+wget <url>
+
+# 递归下载网站
+wget -r -np -k <url>
+
+# 使用curl下载
+curl -O <url>
+
+# 断点续传下载
+wget -c <url>
+
+# 使用curl发送POST请求
+curl -X POST -d "<data>" <url>
+
+# 使用curl发送JSON数据
+curl -X POST -H "Content-Type: application/json" -d '<json_data>' <url>
+
+# 查看HTTP响应头
+curl -I <url>
+
+% network, interface
+# 查看网络接口配置
+ifconfig
+
+# 启用网络接口
+ifconfig <interface> up
+
+# 禁用网络接口
+ifconfig <interface> down
+
+# 配置IP地址
+ifconfig <interface> <ip_address>
+
+# 查看无线网络
+iwconfig
+
+% network, firewall
+# 查看防火墙状态
+ufw status
+
+# 开启防火墙
+ufw enable
+
+# 关闭防火墙
+ufw disable
+
+# 允许端口
+ufw allow <port>
+
+# 拒绝端口
+ufw deny <port>
+
+# 查看iptables规则
+iptables -L
+
+% network, ssh
+# SSH连接到远程主机
+ssh <user>@<host>
+
+# SSH使用指定端口连接
+ssh -p <port> <user>@<host>
+
+# SSH使用密钥连接
+ssh -i <key_file> <user>@<host>
+
+# 复制文件到远程主机
+scp <local_file> <user>@<host>:<remote_path>
+
+# 从远程主机复制文件
+scp <user>@<host>:<remote_file> <local_path>
+
+# 同步目录到远程主机
+rsync -avz <local_dir> <user>@<host>:<remote_dir>

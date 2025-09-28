@@ -1,0 +1,128 @@
+% system, monitor
+# 查看系统负载和进程
+top
+
+# 查看系统负载(简洁版)
+htop
+
+# 查看内存使用情况
+free -h
+
+# 查看磁盘使用情况
+df -h
+
+# 查看磁盘inode使用情况
+df -i
+
+# 查看系统信息
+uname -a
+
+# 查看CPU信息
+lscpu
+
+# 查看内存信息
+cat /proc/meminfo
+
+% system, process
+# 查看进程树
+pstree
+
+# 查看进程详细信息
+ps -ef | grep <process_name>
+
+# 实时监控进程
+watch -n 1 'ps aux | grep <process_name>'
+
+# 查看进程打开的文件
+lsof -p <pid>
+
+# 查看进程网络连接
+netstat -tulpn | grep <pid>
+
+# 查看正在运行的任务
+ps aux | grep <job_name> | grep -v grep
+
+% process, kill
+# 批量干掉任务
+pkill -f <job_name>
+
+# ps查看任务后批量干掉
+ps aux | grep <job_name> | grep -v grep | awk '{print $2}' | xargs kill
+
+% disk, io
+# 查看磁盘IO统计
+iostat -x 1
+
+# 查看磁盘读写速度
+iotop
+
+# 查看文件系统类型
+lsblk -f
+
+% performance, monitor
+# 查看系统性能概况
+vmstat 1
+
+# 查看网络IO统计
+iftop
+
+# 查看系统调用
+strace -p <pid>
+
+# 分析程序性能
+perf top
+
+% service, systemd
+# 查看服务状态
+systemctl status <service>
+
+# 启动服务
+systemctl start <service>
+
+# 停止服务
+systemctl stop <service>
+
+# 重启服务
+systemctl restart <service>
+
+# 设置服务开机启动
+systemctl enable <service>
+
+# 禁用服务开机启动
+systemctl disable <service>
+
+# 查看所有服务状态
+systemctl list-units --type=service
+
+% environment, variable
+# 查看所有环境变量
+env
+
+# 查看特定环境变量
+echo $<VAR_NAME>
+
+# 设置临时环境变量
+export <VAR_NAME>=<value>
+
+# 查看PATH变量
+echo $PATH
+
+# 添加到PATH
+export PATH=$PATH:<new_path>
+
+% cron, schedule
+# 编辑定时任务
+crontab -e
+
+# 查看定时任务
+crontab -l
+
+# 删除所有定时任务
+crontab -r
+
+# 查看定时任务日志
+tail -f /var/log/cron
+
+% cmd, log
+# 将输出记录到临时文件
+<cmd> 2>&1 | tee -a <tmp>.log

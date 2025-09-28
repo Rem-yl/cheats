@@ -1,0 +1,116 @@
+% archive, tar
+# 创建tar压缩包
+tar -czf <archive>.tar.gz <dir>
+
+# 创建tar包(不压缩)
+tar -cf <archive>.tar <dir>
+
+# 解压tar.gz包
+tar -xzf <archive>.tar.gz
+
+# 解压tar包
+tar -xf <archive>.tar
+
+# 查看tar包内容
+tar -tzf <archive>.tar.gz
+
+# 查看tar包内容(不压缩)
+tar -tf <archive>.tar
+
+# 解压到指定目录
+tar -xzf <archive>.tar.gz -C <target_dir>
+
+# 追加文件到tar包
+tar -rf <archive>.tar <file>
+
+# 创建bzip2压缩包
+tar -cjf <archive>.tar.bz2 <dir>
+
+# 解压bzip2包
+tar -xjf <archive>.tar.bz2
+
+% archive, zip
+# 创建zip压缩包
+zip -r <archive>.zip <dir>
+
+# 解压zip包
+unzip <archive>.zip
+
+# 解压到指定目录
+unzip <archive>.zip -d <target_dir>
+
+# 查看zip包内容
+unzip -l <archive>.zip
+
+# 测试zip包完整性
+unzip -t <archive>.zip
+
+# 更新zip包中的文件
+zip -u <archive>.zip <file>
+
+# 从zip包中删除文件
+zip -d <archive>.zip <file>
+
+# 加密zip包
+zip -e <archive>.zip <dir>
+
+% archive, gzip
+# 压缩文件
+gzip <file>
+
+# 解压缩文件
+gunzip <file>.gz
+
+# 查看压缩文件内容
+zcat <file>.gz
+
+# 压缩并保留原文件
+gzip -c <file> > <file>.gz
+
+# 递归压缩目录下所有文件
+gzip -r <dir>
+
+% archive, 7zip
+# 创建7z压缩包
+7z a <archive>.7z <dir>
+
+# 解压7z包
+7z x <archive>.7z
+
+# 查看7z包内容
+7z l <archive>.7z
+
+# 测试7z包完整性
+7z t <archive>.7z
+
+% archive, rar
+# 创建rar压缩包
+rar a <archive>.rar <dir>
+
+# 解压rar包
+unrar x <archive>.rar
+
+# 查看rar包内容
+unrar l <archive>.rar
+
+# 测试rar包完整性
+unrar t <archive>.rar
+
+% compress, other
+# 创建xz压缩包
+tar -cJf <archive>.tar.xz <dir>
+
+# 解压xz包
+tar -xJf <archive>.tar.xz
+
+# 压缩单个文件为xz
+xz <file>
+
+# 解压xz文件
+unxz <file>.xz
+
+# 压缩为bzip2
+bzip2 <file>
+
+# 解压bzip2
+bunzip2 <file>.bz2

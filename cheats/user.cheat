@@ -1,0 +1,109 @@
+% user, account
+# 查看当前用户
+whoami
+
+# 查看登录用户
+who
+
+# 查看用户信息
+id <user>
+
+# 切换用户
+su - <user>
+
+# 以其他用户身份执行命令
+sudo -u <user> <command>
+
+# 查看用户登录历史
+last
+
+# 添加用户
+useradd -m <username>
+
+# 修改用户密码
+passwd <username>
+
+# 删除用户
+userdel <username>
+
+# 删除用户及其家目录
+userdel -r <username>
+
+# 修改用户信息
+usermod -l <new_name> <old_name>
+
+# 将用户添加到组
+usermod -aG <group> <username>
+
+% user, group
+# 查看所有组
+cat /etc/group
+
+# 创建组
+groupadd <groupname>
+
+# 删除组
+groupdel <groupname>
+
+# 查看用户所属组
+groups <username>
+
+# 修改组名
+groupmod -n <new_name> <old_name>
+
+% permission, file
+# 修改文件权限
+chmod <mode> <file>
+
+# 递归修改目录权限
+chmod -R <mode> <dir>
+
+# 修改文件所有者
+chown <user>:<group> <file>
+
+# 递归修改目录所有者
+chown -R <user>:<group> <dir>
+
+# 查看文件权限详情
+ls -la <file>
+
+# 查看文件ACL权限
+getfacl <file>
+
+# 设置文件ACL权限
+setfacl -m u:<user>:rwx <file>
+
+# 移除ACL权限
+setfacl -x u:<user> <file>
+
+# 设置默认ACL权限
+setfacl -d -m u:<user>:rwx <dir>
+
+% permission, special
+# 设置SUID权限
+chmod u+s <file>
+
+# 设置SGID权限
+chmod g+s <file>
+
+# 设置粘滞位
+chmod +t <dir>
+
+# 查看文件特殊权限
+ls -l <file>
+
+% sudo, management
+# 编辑sudo配置
+visudo
+
+# 查看sudo权限
+sudo -l
+
+# 以root身份执行命令
+sudo <command>
+
+# 切换到root用户
+sudo su -
+
+# 查看sudo日志
+tail -f /var/log/auth.log
