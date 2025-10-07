@@ -1,0 +1,110 @@
+% supervisor, status
+# 查看所有进程状态
+supervisorctl status
+
+# 查看指定进程状态
+supervisorctl status <program_name>
+
+# 查看进程组状态
+supervisorctl status <group_name>:*
+
+% supervisor, control
+# 启动进程
+supervisorctl start <program_name>
+
+# 停止进程
+supervisorctl stop <program_name>
+
+# 重启进程
+supervisorctl restart <program_name>
+
+# 启动所有进程
+supervisorctl start all
+
+# 停止所有进程
+supervisorctl stop all
+
+# 重启所有进程
+supervisorctl restart all
+
+% supervisor, group
+# 启动进程组
+supervisorctl start <group_name>:*
+
+# 停止进程组
+supervisorctl stop <group_name>:*
+
+# 重启进程组
+supervisorctl restart <group_name>:*
+
+% supervisor, reload
+# 重新加载配置文件
+supervisorctl reload
+
+# 更新配置(添加/删除进程)
+supervisorctl update
+
+# 重新读取配置并重启变更的进程
+supervisorctl reread && supervisorctl update
+
+% supervisor, log
+# 查看进程日志尾部
+supervisorctl tail <program_name>
+
+# 实时查看进程日志
+supervisorctl tail -f <program_name>
+
+# 查看进程错误日志
+supervisorctl tail <program_name> stderr
+
+# 实时查看进程错误日志
+supervisorctl tail -f <program_name> stderr
+
+# 清空进程日志
+supervisorctl clear <program_name>
+
+% supervisor, pid
+# 查看进程PID
+supervisorctl pid <program_name>
+
+# 查看supervisord主进程PID
+supervisorctl pid
+
+% supervisor, version
+# 查看supervisor版本
+supervisorctl version
+
+% supervisor, shell
+# 进入交互式shell
+supervisorctl
+
+% supervisor, add
+# 添加新进程(需要先在配置文件中定义)
+supervisorctl add <program_name>
+
+# 删除进程
+supervisorctl remove <program_name>
+
+% supervisor, signal
+# 发送信号给进程
+supervisorctl signal <signal> <program_name>
+
+# 发送HUP信号(重新加载配置)
+supervisorctl signal HUP <program_name>
+
+% supervisor, daemon
+# 启动supervisord守护进程
+supervisord -c /etc/supervisor/supervisord.conf
+
+# 查看supervisord配置文件
+cat /etc/supervisor/supervisord.conf
+
+# 查看进程配置目录
+ls /etc/supervisor/conf.d/
+
+% supervisor, maintail
+# 查看supervisord主日志
+supervisorctl maintail
+
+# 实时查看supervisord主日志
+supervisorctl maintail -f
