@@ -10,7 +10,8 @@ This is a navi cheat sheet repository containing command-line reference files. N
 
 - `cheats/` - Contains all cheat sheet files organized by topic:
   - `system.cheat` - System monitoring, process management, and service control
-  - `network.cheat` - Network commands, connections, downloads, and SSH
+  - `network.cheat` - Network commands, connections, and SSH
+  - `upload.cheat` - Server file upload/download operations (SCP, SFTP, rsync, FTP)
   - `user.cheat` - User management, permissions, and sudo operations
   - `archive.cheat` - File compression and archive operations (tar, zip, etc.)
   - `file.cheat` - File operations, search, statistics, and directory management

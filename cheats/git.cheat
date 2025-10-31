@@ -35,6 +35,9 @@ git diff <commit1> HEAD --color-words -- <file>
 $ commit1: git log --oneline -n 20 | awk '{print $1}'
 $ file: git ls-files
 
+# 查看哪些文件和master有差异
+git diff --name-only origin/master
+
 % git, blame
 # 查看文件的责任人
 git blame --date=short <file>
