@@ -61,3 +61,7 @@ git stash push -m <comment>
 % git, status
 # 查看所有文件的提交情况
 git status --untracked-files=all
+
+% git, remote 
+# 修改远程仓库地址
+git remote set-url origin <new_repo>
