@@ -126,3 +126,6 @@ cp -r <source> <target>
 
 # 移动/重命名目录
 mv <source> <target>
+
+# 清理文件
+ncdu
