@@ -1,0 +1,94 @@
+% dida, auth
+# 查看登录状态
+dida auth status
+
+# 浏览器 OAuth 登录
+dida auth login
+
+# 用 token 登录
+dida auth token "<token>"
+
+% dida, project
+# 列出所有清单(ID / 名称 / 颜色)
+dida project list
+
+% dida, create
+# 记一条带截止时间的任务(清单可选名称,时间可改)
+dida task create --title "<title>" --project $(echo "<project>" | awk '{print $1}') --due-date "<due>"
+$ project: dida project list
+$ due: printf '%s\n' "$(date -v+0d +%Y-%m-%dT18:00:00+0800)" "$(date -v+1d +%Y-%m-%dT09:00:00+0800)" "$(date -v+1d +%Y-%m-%dT18:00:00+0800)" "$(date -v+1d +%Y-%m-%dT22:00:00+0800)"
+
+# 记一条简单任务(不设时间)
+dida task create --title "<title>" --project $(echo "<project>" | awk '{print $1}')
+$ project: dida project list
+
+# 创建全天任务
+dida task create --title "<title>" --project $(echo "<project>" | awk '{print $1}') --all-day --tags "<tag1,tag2>"
+$ project: dida project list
+
+# 创建带检查项的任务
+dida task create --title "<title>" --project $(echo "<project>" | awk '{print $1}') --items "<子任务1,子任务2>"
+$ project: dida project list
+
+% dida, list
+# 查看某个清单的全部待办
+dida task filter --projects $(echo "<project>" | awk '{print $1}') --status 0
+$ project: dida project list
+
+# 查看全部待办
+dida task filter --status 0
+
+# 查看某时间段待办(如今天)
+dida task filter --start-date "<2026-10-08T00:00:00+0800>" --end-date "<2026-10-08T23:59:59+0800>" --status 0
+
+# 查看某天已完成的任务
+dida task completed --start-date "<2026-10-08T00:00:00+0800>" --end-date "<2026-10-08T23:59:59+0800>"
+
+% dida, note
+# 列出所有笔记型任务(NOTE kind)
+dida task filter --kind NOTE
+
+% dida, search
+# 搜索任务
+dida task search "<keyword>"
+
+% dida, get
+# 查看任务详情(含多行正文)
+dida task get $(echo "<project>" | awk '{print $1}') $(echo "<task>" | awk '{print $1}')
+$ project: dida project list
+$ task: dida task search "<keyword>"
+
+% dida, update
+# 更新标题 / 截止时间(清单可选名称)
+dida task update $(echo "<task>" | awk '{print $1}') --id $(echo "<task>" | awk '{print $1}') --project $(echo "<project>" | awk '{print $1}') --title "<title>" --due-date "<due>"
+$ project: dida project list
+$ task: dida task search "<keyword>"
+$ due: printf '%s\n' "$(date -v+0d +%Y-%m-%dT18:00:00+0800)" "$(date -v+1d +%Y-%m-%dT09:00:00+0800)" "$(date -v+1d +%Y-%m-%dT18:00:00+0800)"
+
+# 改重要性 / 优先级(0=无 1=低 3=中 5=高)
+dida task update $(echo "<task>" | awk '{print $1}') --id $(echo "<task>" | awk '{print $1}') --project $(echo "<project>" | awk '{print $1}') --priority <priority>
+$ project: dida project list
+$ task: dida task search "<keyword>"
+$ priority: printf '0\n1\n3\n5'
+
+# 覆盖写正文(多行用 \n;勿与追加混淆)
+dida task update $(echo "<task>" | awk '{print $1}') --id $(echo "<task>" | awk '{print $1}') --project $(echo "<project>" | awk '{print $1}') --content $(printf '%b' '<line1>\n<line2>')
+$ project: dida project list
+$ task: dida task search "<keyword>"
+
+# 追加正文(读-拼-写,保留已有内容)
+CUR=$(dida task get $(echo "<project>" | awk '{print $1}') $(echo "<task>" | awk '{print $1}') --json | jq -r .content) && dida task update $(echo "<task>" | awk '{print $1}') --id $(echo "<task>" | awk '{print $1}') --project $(echo "<project>" | awk '{print $1}') --content "$CUR"$(printf '\n%b' '<new_text>')
+$ project: dida project list
+$ task: dida task search "<keyword>"
+
+% dida, complete
+# 完成任务
+dida task complete $(echo "<project>" | awk '{print $1}') $(echo "<task>" | awk '{print $1}')
+$ project: dida project list
+$ task: dida task search "<keyword>"
+
+% dida, delete
+# 删除任务(慎用)
+dida task delete $(echo "<project>" | awk '{print $1}') $(echo "<task>" | awk '{print $1}')
+$ project: dida project list
+$ task: dida task search "<keyword>"
